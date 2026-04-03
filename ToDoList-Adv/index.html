@@ -1,20 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dark Mode To-Do List</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo Project</title>
+    <style>
+
+        body{
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+       
+        
+        h1{
+            text-align: center;
+            color: #1e3c72;
+            margin-bottom: 20px;
+        }
+        .input-section{
+            display: flex;
+            gap: 10px;
+        }
+        .container{
+            transition: 0.3 ease;
+            background-color: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            width: 400px;
+}
+        .completed{
+            text-decoration: line-through;
+            opacity: 0.6;
+        }
+        #inputTask{
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            width: 65%;
+            outline: none;
+        }
+        #addTask{
+            background-color: #2a5298;
+            border-radius: 8px;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+        #addTask:hover{
+            background-color: #1e3c72;
+        }
+
+        #taskList{
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        li{
+            list-style: none;
+            background-color: #f4f7fb;
+            padding: 12px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        li button{
+            background-color: crimson;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 6px 10px;
+            cursor: pointer;
+        }
+        li button:hover{
+            background-color: darkred;
+        }
+
+
+
+
+    </style>
+</head>
+<body>
+
+    
     <div class="container">
-      <h1>To-Do List</h1>
-      <div class="input-container">
-        <input type="text" id="todo-input" placeholder="Add a new task..." />
-        <button id="add-task-btn">Add Task</button>
-      </div>
-      <ul id="todo-list"></ul>
+
+        <h1>To Do List</h1>
+        <div class="input-section">
+
+            <input id="inputTask" type="text" placeholder="Enter the Task">
+            <button id="addTask" >Add Task</button>
+        </div>
+        <ul id="taskList" ></ul>
+
     </div>
-    <script src="script.js"></script>
-  </body>
+    
+    
+    <script src="script.js" ></script>
+</body>
 </html>
