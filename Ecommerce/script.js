@@ -24,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
     productList.appendChild(productDiv);
   });
 
+
   productList.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON") {
       const productId = parseInt(e.target.getAttribute("data-id"));
@@ -31,10 +32,22 @@ document.addEventListener("DOMContentLoaded", () => {
       addToCart(product);
     }
   });
+  cartItems.addEventListener("click", (e) => {
+    if (e.target.tagName === "BUTTON") {
+      const index = parseInt(e.target.getAttribute("data_index"));
+      removeFromCart(index)
+      
+      
+    }
+  });
 
   function addToCart(product) {
     cart.push(product);
     renderCart();
+  }
+  function removeFromCart(index){
+    cart.splice(index,1)
+    renderCart()
   }
 
   function renderCart() {
@@ -47,11 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
       cart.forEach((item, index) => {
         totalPrice += item.price;
         const cartItem = document.createElement("div");
+        cartItem.classList.add("product1")
+
+        
         cartItem.innerHTML = `
-        ${item.name} - $${item.price.toFixed(2)}
+        <span>${item.name} - $${item.price.toFixed(2)}</span>
+        <button data_index ="${index}" >Remove</button>
         `;
+       
         cartItems.appendChild(cartItem);
         totalPriceDisplay.textContent = `${totalPrice.toFixed(2)}`;
+
+        
+
       });
     } else {
       emptyCartMessage.classList.remove("hidden");
@@ -64,4 +85,9 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Checkout successfully");
     renderCart();
   });
+
+
+  
+  // ------->>>>>>> Add the local storage
+
 });

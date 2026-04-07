@@ -32,6 +32,7 @@ h2 {
   margin-bottom: 30px;
 }
 
+
 .product {
   background-color: #333333;
   padding: 10px;
@@ -41,8 +42,25 @@ h2 {
   align-items: center;
   border-radius: 5px;
 }
-
+.product1 {
+  background-color: #333333;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+}
 .product button {
+  background-color: #6200ea;
+  border: none;
+  padding: 5px 10px;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+.product1 button {
   background-color: #6200ea;
   border: none;
   padding: 5px 10px;
