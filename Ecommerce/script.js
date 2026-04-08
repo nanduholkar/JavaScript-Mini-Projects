@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     { id: 3, name: "Product 3", price: 59.999 },
   ];
 
-  const cart = [];
+  const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
   const productList = document.getElementById("product-list");
   const cartItems = document.getElementById("cart-items");
@@ -24,6 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
     productList.appendChild(productDiv);
   });
 
+  function savecart(){
+    localStorage.setItem("cart",JSON.stringify(cart));
+  }
+
 
   productList.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON") {
@@ -34,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
   cartItems.addEventListener("click", (e) => {
     if (e.target.tagName === "BUTTON") {
-      const index = parseInt(e.target.getAttribute("data_index"));
+      const index = parseInt(e.target.getAttribute("data-index"));
       removeFromCart(index)
       
       
@@ -43,10 +47,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function addToCart(product) {
     cart.push(product);
+    savecart()
     renderCart();
   }
   function removeFromCart(index){
     cart.splice(index,1)
+    savecart()
     renderCart()
   }
 
@@ -65,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
         
         cartItem.innerHTML = `
         <span>${item.name} - $${item.price.toFixed(2)}</span>
-        <button data_index ="${index}" >Remove</button>
+        <button data-index ="${index}" >Remove</button>
         `;
        
         cartItems.appendChild(cartItem);
@@ -76,15 +82,20 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     } else {
       emptyCartMessage.classList.remove("hidden");
+      cartTotalMessage.classList.add("hidden");
       totalPriceDisplay.textContent = `$0.00`;
     }
   }
 
   checkOutBtn.addEventListener("click", () => {
     cart.length = 0;
-    alert("Checkout successfully");
+    savecart();
     renderCart();
-  });
+    alert("Checkout successfully");
+})
+  
+
+  
 
 
   
